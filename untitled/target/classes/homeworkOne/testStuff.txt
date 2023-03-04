@@ -1,0 +1,50 @@
+         Random rrr = new Random();
+         int a = rrr.nextInt(100);
+         int b = rrr.nextInt(10000);
+         int c = rrr.nextInt(100);
+         print("a = %d, ", a);
+         print("b = %d, ", b);
+         print("c = %d\n", c);
+         m1 = arrayMaker(a,b,c);
+         print(Arrays.toString(m1));
+         print(m1.length);
+
+         -------
+
+ static int[] arrayMaker(int start, int end, int step) {
+        //a = 62, b = 6081, c = 81
+//        a = 13, b = 7036, c = 1
+//        a = 84, b = 7484, c = 81
+//        start = 13;
+//        end = 7036;
+//        step = 1;
+
+        int arrStart = start + Math.floorMod(-start, step);
+        int arrEnd = end - Math.floorMod(end, step);
+        print("mathfloorend = %d\n", Math.floorMod(end, step));
+        print("array start = %d\n", arrStart);
+        print("array end = %d\n", arrEnd);
+
+
+//        int arrSize = (int) Math.round(((double)end/ step - start)); // да уж, не пайтон это совсем.. =)
+//        int arrSize = (int) Math.round((double)(end-arrStart) / step); // да уж, не пайтон это совсем.. =)
+        int arrSize =(arrEnd - arrStart + step) / step; // да уж, не пайтон это совсем.. =)
+//        if (start%step == 0) arrSize++; // первый элемент, если кратен шагу, то в массиве +1 элемент
+//        else if (end%step == 0) arrSize++; // последний элемент, если кратен шагу, то в массиве +1 элемент
+        print("array size = %d\n", arrSize);
+
+
+        ---------
+
+
+        // static int[] arrayMaker(int fin, int step) {
+        //    print((-133)%3); не правильно
+        //
+        //        print(start + (-start)%step);
+        //
+        //        int arrSize = (int) ((fin-start) / step);
+        //        int[] someArray = new int[arrSize];
+        //        for (int i = (start + (-start)%step); i <= fin; i += step) {
+        //        someArray[i/step - 1] = i; // -1 т.к. индексация с нулевого элемнта
+        //        }
+        //        return someArray;
